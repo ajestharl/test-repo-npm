@@ -175,7 +175,7 @@ export const createPackage = (config: PackageConfig) => {
     docgen: false,
     packageName: config.name,
     release: true,
-    releaseToNpm: false,
+    releaseToNpm: true,
   });
   addTestTargets(tsProject);
   addPrettierConfig(tsProject);
@@ -201,7 +201,7 @@ const package2 = new typescript.TypeScriptProject({
   parent: project,
   projenrcTs: false,
   release: true,
-  releaseToNpm: false,
+  releaseToNpm: true,
   repository: projectMetadata.repositoryUrl,
   deps: [
     "@aws-sdk/client-resource-groups-tagging-api",
