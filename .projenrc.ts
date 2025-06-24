@@ -10,6 +10,8 @@ const projectMetadata = {
   defaultReleaseBranch: "main",
   name: "ajithaproject",
 };
+
+const NODE_VERSION = ">18.0.0";
 export const configureMarkDownLinting = (tsProject: TypeScriptAppProject) => {
   tsProject.addDevDeps(
     "eslint-plugin-md",
@@ -96,7 +98,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     },
   },
   cdkVersionPinning: false,
-  release: false,
+  release: true,
   autoMerge: false,
   releaseToNpm: false,
   constructsVersion: "10.4.2",
@@ -178,6 +180,11 @@ export const createPackage = (config: PackageConfig) => {
   addTestTargets(tsProject);
   addPrettierConfig(tsProject);
   configureMarkDownLinting(tsProject);
+  tsProject.addFields({
+    engines: {
+      node: NODE_VERSION,
+    },
+  });
   tsProject.package.file.addOverride("private", false);
   return tsProject;
 };
@@ -196,10 +203,33 @@ const package2 = new typescript.TypeScriptProject({
   release: false,
   releaseToNpm: false,
   repository: projectMetadata.repositoryUrl,
+  deps: [
+    "@aws-sdk/client-resource-groups-tagging-api",
+    "@aws-sdk/client-kms",
+    "@aws-sdk/client-dynamodb",
+    "commander@^11.0.0",
+  ],
+  devDeps: [
+    "aws-sdk-client-mock",
+    "mock-fs",
+    "@types/mock-fs",
+    "jest-runner-groups",
+  ],
+  jestOptions: {
+    jestConfig: {
+      runner: "groups",
+      verbose: true,
+    },
+  },
 });
 addTestTargets(package2);
 addPrettierConfig(package2);
 configureMarkDownLinting(package2);
+package2.addFields({
+  engines: {
+    node: NODE_VERSION,
+  },
+});
 package2.package.file.addOverride("private", false);
 
 project.synth();
