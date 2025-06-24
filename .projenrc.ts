@@ -174,7 +174,7 @@ export const createPackage = (config: PackageConfig) => {
     bundledDeps: config.bundledDeps,
     docgen: false,
     packageName: config.name,
-    release: false,
+    release: true,
     releaseToNpm: false,
   });
   addTestTargets(tsProject);
@@ -200,7 +200,7 @@ const package2 = new typescript.TypeScriptProject({
   outdir: "src/packages/ajithapack2",
   parent: project,
   projenrcTs: false,
-  release: false,
+  release: true,
   releaseToNpm: false,
   repository: projectMetadata.repositoryUrl,
   deps: [
