@@ -51,4 +51,6 @@ junit.xml
 tsconfig.json
 !/API.md
 !/lerna.json
+!/.github/workflows/release_ajithapack1.yml
+!/.github/workflows/release_ajithapack2.yml
 !/.projenrc.ts
