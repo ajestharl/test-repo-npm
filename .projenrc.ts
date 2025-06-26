@@ -126,7 +126,7 @@ if (project.github) {
 new JsonFile(project, "lerna.json", {
   obj: {
     packages: ["src/packages/*", "src/packages/smithy/build/smithy/source/*"],
-    version: "0.0.0",
+    version: "independent",
     npmClient: "yarn",
   },
 });

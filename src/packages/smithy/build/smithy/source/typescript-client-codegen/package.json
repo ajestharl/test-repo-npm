@@ -11,6 +11,10 @@
         "clean": "rimraf ./dist-* && rimraf *.tsbuildinfo || exit 0",
         "prepack": "yarn run clean && yarn run build"
     },
+    "private": false,
+    "publishConfig": {
+        "access": "public"
+    },
     "main": "./dist-cjs/index.js",
     "types": "./dist-types/index.d.ts",
     "module": "./dist-es/index.js",
