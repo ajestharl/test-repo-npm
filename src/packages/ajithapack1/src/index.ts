@@ -25,6 +25,7 @@ export class HelloWorldConstruct extends Construct {
 
   public sayHello(): string {
     console.log('say');
+    console.log('say2');
     return `${this.greeting}, ${this.name}!`;
   }
 
