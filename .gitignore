@@ -53,4 +53,5 @@ tsconfig.json
 !/lerna.json
 !/.github/workflows/release_ajithapack1.yml
 !/.github/workflows/release_ajithapack2.yml
+!/.github/workflows/release_client.yml
 !/.projenrc.ts
